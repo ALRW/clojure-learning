@@ -46,7 +46,9 @@
 (defn even-shorter-symmetrize-body-parts
   "Expects a seq of maps that have a :name and :size"
   [asym-body-parts]
-  (reduce (#(into %1 (set [%2 (matching-part %2)])))))
+  (reduce (#(into %1 (set [%2 (matching-part %2)])
+                  []
+                  asym-body-parts))))
 
 (defn hit
   [asym-body-parts]
