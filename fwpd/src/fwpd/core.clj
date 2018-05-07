@@ -34,4 +34,7 @@
   [minimum-glitter records]
   (filter #(>= (:glitter-index %) minimum-glitter) records))
 
+(defn vampire-names
+  [vampires]
+  (map :name vampires))
 
