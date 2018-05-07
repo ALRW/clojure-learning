@@ -21,7 +21,7 @@
        (clojure.string/split string #"\n")))
 
 (defn mapify
-  "Return a seq of maps like {:naem \"Edwards Cullen\" :glitter-index 10}"
+  "Return a seq of maps like {:name \"Edwards Cullen\" :glitter-index 10}"
   [rows]
   (map (fn [unmapped-row]
          (reduce (fn [row-map [vamp-key value]]
@@ -37,4 +37,8 @@
 (defn vampire-names
   [vampires]
   (map :name vampires))
+
+(defn append
+  [vamp vampires]
+  (conj (into [] vampires) vamp))
 
