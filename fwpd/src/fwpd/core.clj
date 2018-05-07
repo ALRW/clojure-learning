@@ -50,3 +50,9 @@
     (into [vamp] vampires)
     vampires))
 
+(defn suspects->csv
+  [suspects]
+  (clojure.string/join "\n" (map (fn [suspect]
+                                   (clojure.string/join "," (vals suspect)))
+                                 suspects)))
+
