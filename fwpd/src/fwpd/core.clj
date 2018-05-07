@@ -38,7 +38,15 @@
   [vampires]
   (map :name vampires))
 
+(defn validate
+  [keywords suspect]
+  (every? #(not-empty (get suspect %)) keywords))
+
+(def validations [:name :glitter-index])
+
 (defn append
   [vamp vampires]
-  (conj (into [] vampires) vamp))
+  (if (validate validations vamp)
+    (into [vamp] vampires)
+    vampires))
 
