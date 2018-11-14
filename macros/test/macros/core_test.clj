@@ -21,3 +21,11 @@
                                 (* 2)
                                 )]
       (is (= 4 result)))))
+
+(deftest thread-first-macro
+  (testing "thread-first with multiple forms"
+    (let [result (m/thread-first (+ 1 1)
+                                 inc
+                                 (* 2)
+                                 (/ 3))]
+      (is (= 2 result)))))
