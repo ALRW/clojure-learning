@@ -6,9 +6,16 @@
 (defmacro when-one [condition & forms]
   (list 'if condition (cons 'do forms)))
 
+(defn convert-forms
+  [form forms]
+  (let [next-form (first forms)]
+    (if next-form
+      (let [threaded (if (seq? next-form)
+                       `(~@next-form ~form)
+                       (list next-form form))]
+        (recur threaded (next forms)))
+     form)))
+
 (defmacro thread-last
-  ([form] form)
-  ([form & forms] (if forms
-                    (let [f (first forms)]
-                      `(~@f ~form))
-                   form)))
+  ([form & forms]
+   (convert-forms form forms)))

@@ -16,6 +16,8 @@
 
   (testing "thread last multiple forms"
     (let [result (m/thread-last (+ 1 1)
-                                (+ 1)
+                                (- 3)
+                                inc
+                                (* 2)
                                 )]
-      (is (= result 3)))))
+      (is (= 4 result)))))
